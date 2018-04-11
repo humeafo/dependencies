@@ -40,5 +40,5 @@ build_install() {
   cmake_build_install .. \
 	-DCMAKE_DISABLE_FIND_PACKAGE_PythonInterp=true \
 	-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=true \
-	-DONLY_SIMPLE=ON
+	-DONLY_SIMPLE=ON -DSTATICCOMPILE=ON
 }
