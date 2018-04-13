@@ -39,8 +39,9 @@ build_install() {
     exit 1
   fi
   cd $build_dir &&
-  autoconf
+  autoconf &&
   ./configure --prefix="$target" &&
   make &&
-  make install
+  make install && 
+  cp $config_files_dir/yices2-config.cmake "$target"
 }
