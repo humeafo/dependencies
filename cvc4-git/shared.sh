@@ -39,12 +39,10 @@ build_install() {
     exit 1
   fi
   cd "$build_dir" &&
-  # build libantlr3c with provided script
-  contrib/get-antlr-3.4
-  # build CVC4 with --bsd to allow usage under the terms of
-  # the modified BSD license.
+  contrib/get-antlr-3.4 &&
+  ./autogen.sh &&
   ./configure --with-antlr-dir=`pwd`/antlr-3.4 ANTLR=`pwd`/antlr-3.4/bin/antlr3 --prefix="$target" &&
   make -j $num_threads &&
   make install &&
-  cp -f "$package_dir/CVC4Config.cmake" "$target/CVC4Config.cmake"
+  cp -f "$config_files_dir/CVC4Config.cmake" "$target/CVC4Config.cmake"
 }
