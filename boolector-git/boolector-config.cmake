@@ -1,0 +1,5 @@
+get_filename_component(BTOR_DIR ${CMAKE_CURRENT_LIST_FILE} PATH)
+set(BTOR_BIN_DIRS     ${BTOR_DIR}/bin )
+set(BTOR_INCLUDE_DIRS ${BTOR_DIR}/include )
+set(BTOR_INCLUDE_DIR  ${BTOR_INCLUDE_DIRS} )
+set(BTOR_LIBRARIES    ${BTOR_DIR}/lib/libboolector.a )
