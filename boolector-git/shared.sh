@@ -34,23 +34,21 @@ pre_build() {
 }
  
 build_install() {
-  if [ -z "$target" ] ; then 
+  if [ -z "$target" ] ; then
     echo '$target is undefined'
     exit 1
   fi
-  cd $build_dir &&
-  ./contrib/setup-cadical.sh &&
-  ./contrib/setup-lingeling.sh &&
-  ./contrib/setup-btor2tools.sh &&
-  ./configure.sh && cd build && make -j $num_threads &&
-  mkdir -p "$target/include" &&
-  mkdir -p "$target/bin" &&
-  mkdir -p "$target/lib" &&
-  cp ../src/*.h "$target/include" &&
-  cp -R bin/* "$target/bin" &&
-  cp -R lib/* "$target/lib" &&
-  cp ../deps/btor2tools/build/libbtor2parser.a "$target/lib" &&
-  cp ../deps/cadical/build/libcadical.a "$target/lib" &&
-  cp ../deps/lingeling/liblgl.a "$target/lib" &&
-  cp $config_files_dir/boolector-config.cmake "$target"
+  cd "$build_dir" &&
+  contrib/setup-btor2tools.sh &&
+  contrib/setup-lingeling.sh &&
+  contrib/setup-cadical.sh  &&  
+  ./configure.sh --prefix "$target" &&
+  cd build &&
+  make -j $num_threads &&
+  make install &&
+  cp ../deps/install/lib/libbtor2parser.a $target/lib &&
+  cp ../deps/install/lib/libcadical.a $target/lib &&
+  cp ../deps/install/lib/liblgl.a $target/lib &&
+  install_cmake_files $cmake_files_dir &&  
+  cp BoolectorConfig.cmake "$target"
 }

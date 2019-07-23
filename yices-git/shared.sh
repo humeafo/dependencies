@@ -5,14 +5,14 @@ if [ -z "$build" ] ; then
   exit 1
 fi
 if [ -z "$package_dir" ] ; then 
-  echo '$build is undefined'
+  echo '$package_dir is undefined'
   exit 1
 fi
 
-package=Yices
+package=yices
 source=nosourcefile
 build_dir=$build/$package-$version
-url='https://github.com/SRI-CSL/yices2.git'
+url='https://github.com/SRI-CSL/yices2'
 
 download() {
   mkdir -p $cache/$package-$version &&
@@ -32,7 +32,6 @@ unpack() {
 pre_build() {
   true
 }
- 
 build_install() {
   if [ -z "$target" ] ; then 
     echo '$target is undefined'
@@ -42,6 +41,7 @@ build_install() {
   autoconf &&
   ./configure --prefix="$target" &&
   make &&
-  make install && 
+  make install &&
   cp $config_files_dir/yices2-config.cmake "$target"
 }
+
