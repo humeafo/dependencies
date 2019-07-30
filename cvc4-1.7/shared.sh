@@ -43,7 +43,7 @@ build_install() {
   contrib/get-antlr-3.4 &&
   contrib/get-cadical &&
   contrib/get-symfpu &&
-  ./configure.sh --antlr-dir=$build_dir/antlr-3.4 --cadical --symfpu &&
+  ./configure.sh --prefix="$target" --antlr-dir=$build_dir/antlr-3.4 --cadical --symfpu &&
   cd build &&
   make -j $num_threads &&
   make install &&
