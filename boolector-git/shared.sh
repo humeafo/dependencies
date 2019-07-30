@@ -42,13 +42,13 @@ build_install() {
   contrib/setup-btor2tools.sh &&
   contrib/setup-lingeling.sh &&
   contrib/setup-cadical.sh  &&  
-  ./configure.sh --prefix "$target" &&
+  ./configure.sh --prefix "$target" --no-minisat --no-picosat &&
   cd build &&
   make -j $num_threads &&
   make install &&
   cp ../deps/install/lib/libbtor2parser.a $target/lib &&
   cp ../deps/install/lib/libcadical.a $target/lib &&
   cp ../deps/install/lib/liblgl.a $target/lib &&
-  install_cmake_files $cmake_files_dir &&  
+  install_cmake_files $cmake_files_dir &&
   cp BoolectorConfig.cmake "$target"
 }
