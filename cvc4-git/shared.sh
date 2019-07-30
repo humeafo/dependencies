@@ -44,7 +44,7 @@ build_install() {
   contrib/get-cadical &&
   #metasmt not support FP so skip it
   #contrib/get-symfpu &&
-  ./configure.sh --prefix="$target" --antlr-dir=$build_dir/antlr-3.4 --cadical --symfpu &&
+  ./configure.sh --prefix="$target" --antlr-dir=$build_dir/antlr-3.4 --cadical &&
   cd build &&
   make -j $num_threads &&
   make install &&
