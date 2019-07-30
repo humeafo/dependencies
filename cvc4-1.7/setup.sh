@@ -1,7 +1,5 @@
 #!/bin/sh
 
 version=1.7
-
-config_files_dir=$base_dir/cvc4-git
-
-source $base_dir/cvc4-git/shared.sh
+branch=1.7
+source $base_dir/cvc4-1.7/shared.sh
