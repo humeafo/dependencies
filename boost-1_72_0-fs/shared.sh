@@ -38,8 +38,8 @@ build_install() {
     --with-system
   "
   cd $build_dir &&
-  test -x bjam || ./bootstrap.sh &&
-  ./bjam -q $COMMON_OPTS $LIBRARIES -j$num_threads install || {
+  test -x b2 || ./bootstrap.sh &&
+  ./b2 -q $COMMON_OPTS $LIBRARIES -j$num_threads install || {
     local needed="false"
     if [ ! -f /usr/include/zlib.h ] ; then
       echo 'zlib.h was not found.'
